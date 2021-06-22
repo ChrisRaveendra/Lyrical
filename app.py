@@ -10,14 +10,16 @@ def generateArtistLyrics(name):
 
     for song in songs:
         m.populateMarkovChain(song)
-    return m.generateLyrics()
+    lyrics = m.generateLyrics()
+    return lyrics.split("NEWLINE")
 
 @app.route('/', methods=['GET', 'POST'])
 def lyricsGenerator():
-    lyrics = ""
+    lyrics = []
     if request.method == "POST":
         artist = request.form['search']
         lyrics = generateArtistLyrics(artist)
+        print(lyrics)
     return render_template('home.html', lyrics=lyrics)
 
 

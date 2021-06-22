@@ -59,7 +59,7 @@ def scrapeLyricsForArtist(name):
 
         for anchor in anchor_tags:
             if len(anchor.text) > 0 and anchor.text[0] != "[":
-                text = anchor.text.replace("\n", " ")
+                text = anchor.text.replace("\n", "NEWLINE")
                 current_lyrics.append(text)
         song_lyrics.append(current_lyrics)
     return song_lyrics
